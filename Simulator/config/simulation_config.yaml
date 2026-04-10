@@ -1,0 +1,71 @@
+# ==============
+# INITIAL CONFIG
+# ==============
+simulation:
+  duration_days: 30
+  time_step_minutes: 60
+  season: "Winter"
+  start_date: "2026-12-24"
+
+grid:
+  export_limit_kw: 500.0  # Greater limit because it is now a neighborhood
+  cost_import_cents: 75
+  price_export_cents: 90
+
+strategy:
+  name: "LOAD_PRIORITY" # Asumimos que todos usan la misma estrategia por ahora
+
+# ==============
+# HOUSE PROFILES
+# ==============
+house_profiles:
+  Studio:
+    load:
+      base_load_kw: 0.2
+      peak_load_kw: 2.5
+    hardware:
+      battery_capacity: 5.0
+      panel_peak_kw: 3.0
+      inverter_max_kw: 2.5
+
+  Small_Family:
+    load:
+      base_load_kw: 0.4
+      peak_load_kw: 4.5
+    hardware:
+      battery_capacity: 10.0
+      panel_peak_kw: 5.0
+      inverter_max_kw: 4.0
+
+  Large_Family:
+    load:
+      base_load_kw: 0.8
+      peak_load_kw: 7.0
+    hardware:
+      battery_capacity: 13.5
+      panel_peak_kw: 8.0
+      inverter_max_kw: 7.0
+
+# ==================
+# WEALTH MULTIPLIERS
+# ==================
+wealth_multipliers:
+  Low_Income: 0.8
+  Middle_Income: 1.0
+  High_Income: 1.2
+  Luxury: 1.5
+
+# ===================
+# NEIGHBORHOOD CONFIG
+# ===================
+neighborhood_composition:
+  - profile: "Studio"
+    wealth: "Low_Income"
+    count: 10
+  - profile: "Small_Family"
+    wealth: "Middle_Income"
+    count: 20
+  - profile: "Large_Family"
+    wealth: "Luxury"
+    count: 5
+    
