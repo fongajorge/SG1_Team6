@@ -1,3 +1,93 @@
-svg {
-	margin: 20px;
+body {
+  background: #f5f6fa;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.dashboard-title span {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  color: #777;
+  margin-top: 5px;
+}
+
+.dashboard-title-decor {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #333;
+  margin: 30px 0;
+  position: relative;
+}
+/* ===== CARD ===== */
+.card {
+  background: #ffff;
+  border-radius: 16px; /* un poco más moderno */
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.card-body {
+  padding: 0; /* evita doble padding */
+}
+
+/* ===== TITULOS ===== */
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #777;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+/* ===== SVG ===== */
+.chart-svg {
+  width: 100%;
+  height: auto;
+  display: block; /* 🔥 evita espacios raros abajo */
+}
+
+/* ===== CONTENEDOR DE GRÁFICA ===== */
+.chart-container {
+  width: 100%;
+  overflow: hidden; /* evita que se salga */
+}
+
+/* ===== AXES ===== */
+.axis path,
+.axis line {
+  stroke: #e0e0e0;
+}
+
+.axis text {
+  fill: #888;
+  font-size: 11px;
+}
+
+/* ===== GRID LINES ===== */
+.grid line {
+  stroke: #f0f0f0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+  }
 }

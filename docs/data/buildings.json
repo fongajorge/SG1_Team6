@@ -1,0 +1,62 @@
+[
+	{
+		"name": "Burj Khalifa",
+		"height": "828",
+		"weight": "700",
+		"country": "UAE"
+	},
+	{
+		"name": "Shanghai Tower",
+		"height": "632",
+		"weight": "300",
+		"country": "China"
+	},
+	{
+		"name": "Abraj Al-Bait Clock Tower",
+		"height": "601",
+		"weight": "300",
+		"country": "Saudi Arabia"
+	},
+	{
+		"name": "Ping An Finance Centre",
+		"height": "599",
+		"weight": "200",
+		"country": "China"
+	},
+	{
+		"name": "Golding Finance 117",
+		"height": "596.6",
+		"weight": "800",
+		"country": "China"
+	},
+	{
+		"name": "Lotte World Tower",
+		"height": "554.5",
+		"weight": "450",
+		"country": "South Korea"
+	},
+	{
+		"name": "One World Trade Center",
+		"height": "541.3",
+		"weight": "135",
+		"country": "United States"
+	},
+	{
+		"name": "Guangzhou CTF Finance Center",
+		"height": "530",
+		"weight": "730",
+		"country": "China"
+	},
+	{
+		"name": "Tianjin CTF Finance Center",
+		"height": "530",
+		"weight": "235",
+		"country": "China"
+	},
+	{
+		"name": "China Zun",
+		"height": "528",
+		"weight": "600",
+		"country": "China"
+	}
+]
