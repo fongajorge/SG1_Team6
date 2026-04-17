@@ -14,18 +14,18 @@ The project is organized into modular components to separate configuration, phys
 GreenGridSim
 ├── .devcontainer/               # Development container configuration (Docker)
 ├── config/
-│   └── simulation_config.yaml   # Simulation parameters (Battery, Solar, Strategy)
+│   └── simulation_config.yaml  # Simulation parameters (Battery, Solar, Strategy)
 ├── docs/                        # Web dashboard (GitHub Pages) and reports
 ├── simulator/
-|   ├── main.py                  # Entry point to run the simulation
-|   ├── outputs/                 # Generated CSV results
-|   └── src/                     # Source code package
-│       ├── components.py        # Hardware models (Battery, Inverter, Panels)
-│       ├── engine.py            # SimPy orchestration logic
-│       ├── environment.py       # Weather and Load stochastic models
-│       ├── neighborhood.py      # Neighborhood and House entity logic
-│       ├── preparation.py       # Data processing for the dashboard
-│       └── strategy.py          # Energy Management Strategies (EMS)    
+│    ├── main.py                # Entry point to run the simulation
+│    ├── outputs/               # Generated CSV results
+│    └── src/                   # Source code package
+│         ├── components.py     # Hardware models (Battery, Inverter, Panels)
+│         ├── engine.py         # SimPy orchestration logic
+│         ├── environment.py    # Weather and Load stochastic models
+│         ├── neighborhood.py   # Neighborhood and House entity logic
+│         ├── preparation.py    # Data processing for the dashboard
+│         └── strategy.py       # Energy Management Strategies (EMS)    
 └── README.md
 ```
 
