@@ -1,13 +1,14 @@
 // 1. Create a Global and invisible Tooltip that we will share among all charts
+// Modificado para usar variables de Bootstrap y adaptarse al tema oscuro/claro
 const tooltip = d3.select("body").append("div")
     .attr("class", "d3-tooltip")
     .style("position", "absolute")
-    .style("background", "rgba(255, 255, 255, 0.95)")
-    .style("border", "1px solid #ccc")
+    .style("background", "var(--bs-body-bg)")
+    .style("border", "1px solid var(--bs-border-color)")
     .style("border-radius", "8px")
     .style("padding", "12px")
     .style("font-size", "13px")
-    .style("color", "#333")
+    .style("color", "var(--bs-body-color)")
     .style("box-shadow", "0 4px 15px rgba(0,0,0,0.15)")
     .style("pointer-events", "none")
     .style("opacity", 0)
@@ -24,25 +25,12 @@ d3.json("data/dashboard_data.json").then((data) => {
     }
 
     // --- CHART RENDERING ---
-    // Req: Production vs consumption per household type
     renderDoubleBar("#chart1", data.by_house_type, "house_type", "House Type");
-
-    // Req: Production vs consumption per wealth level
     renderDoubleBar("#chart2", data.by_wealth, "wealth_level", "Wealth Level");
-
-    // Req: Total production vs consumption / Energy export to the grid
     renderDonut("#chart3", data.summary);
-
-    // Req: Duck Curve / Peak production vs peak consumption times / Energy surplus vs deficit
     renderDuckCurve("#chart4", data.duck_curve, data.summary);
-
-    // Req: Battery storage utilization
     renderBatteryArea("#chart5", data.duck_curve);
-
-    // Req: Cost savings from self-consumption / Exported energy (Leaf Project Bubble Chart)
     renderBubbleChart("#chart6", data.by_house);
-
-    // Req: Adoption rates (Energy Independence) by Wealth Level
     renderStackedChart("#chart7", data.by_wealth);
 
 }).catch((error) => {
@@ -101,7 +89,14 @@ function renderDoubleBar(container, data, keyName, xAxisLabel) {
 
     g.append("g").attr("transform", `translate(0, ${height})`).call(d3.axisBottom(x));
     g.append("g").call(d3.axisLeft(y).ticks(6).tickFormat(d => `${d / 1000}k`));
-    g.append("text").attr("transform", "rotate(-90)").attr("x", -height / 2).attr("y", -40).attr("text-anchor", "middle").style("font-size", "12px").text("Energy (kWh)");
+    g.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -height / 2)
+        .attr("y", -40)
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .style("fill", "var(--bs-body-color)")
+        .text("Energy (kWh)");
 }
 
 /* =======================================================================
@@ -144,7 +139,7 @@ function renderDonut(container, summaryData) {
     const legend = svg.append("g").attr("transform", `translate(${totalWidth - legendWidth + 20}, ${totalHeight / 2 - 30})`);
     const legendItem = legend.selectAll(".legend-item").data(data).enter().append("g").attr("transform", (d, i) => `translate(0, ${i * 30})`);
     legendItem.append("rect").attr("width", 14).attr("height", 14).attr("rx", 3).attr("fill", d => color(d.name));
-    legendItem.append("text").attr("x", 22).attr("y", 12).style("font-size", "13px").text(d => d.name);
+    legendItem.append("text").attr("x", 22).attr("y", 12).style("font-size", "13px").style("fill", "var(--bs-body-color)").text(d => d.name);
 }
 
 /* =======================================================================
@@ -170,7 +165,7 @@ function renderDuckCurve(container, data, summary) {
 
     // Zero Line (Grid Neutrality)
     g.append("line").attr("x1", 0).attr("x2", width).attr("y1", y(0)).attr("y2", y(0))
-        .attr("stroke", "#999").attr("stroke-dasharray", "4,4");
+        .attr("stroke", "var(--bs-secondary-color)").attr("stroke-dasharray", "4,4");
 
     // Deficit / Surplus Area
     const area = d3.area().x(d => x(d.hour)).y0(y(0)).y1(d => y(d.net_load_kw)).curve(d3.curveMonotoneX);
@@ -191,16 +186,16 @@ function renderDuckCurve(container, data, summary) {
 
     if (peakLoadData) {
         g.append("circle").attr("cx", x(peakLoadData.hour)).attr("cy", y(peakLoadData.load_kw)).attr("r", 6).attr("fill", "#EF4444");
-        g.append("text").attr("x", x(peakLoadData.hour)).attr("y", y(peakLoadData.load_kw) - 10).attr("text-anchor", "middle").style("font-size", "11px").style("font-weight", "bold").text("Peak Demand");
+        g.append("text").attr("x", x(peakLoadData.hour)).attr("y", y(peakLoadData.load_kw) - 10).attr("text-anchor", "middle").style("font-size", "11px").style("font-weight", "bold").style("fill", "var(--bs-body-color)").text("Peak Demand");
     }
     if (peakSolarData) {
         g.append("circle").attr("cx", x(peakSolarData.hour)).attr("cy", y(peakSolarData.solar_gen_kw)).attr("r", 6).attr("fill", "#F59E0B");
-        g.append("text").attr("x", x(peakSolarData.hour)).attr("y", y(peakSolarData.solar_gen_kw) - 10).attr("text-anchor", "middle").style("font-size", "11px").style("font-weight", "bold").text("Peak Solar");
+        g.append("text").attr("x", x(peakSolarData.hour)).attr("y", y(peakSolarData.solar_gen_kw) - 10).attr("text-anchor", "middle").style("font-size", "11px").style("font-weight", "bold").style("fill", "var(--bs-body-color)").text("Peak Solar");
     }
 
     // Invisible Tooltip Tracker
     const tracker = g.append("rect").attr("width", width).attr("height", height).attr("fill", "transparent");
-    const verticalLine = g.append("line").attr("y1", 0).attr("y2", height).attr("stroke", "#333").attr("stroke-dasharray", "3,3").style("opacity", 0);
+    const verticalLine = g.append("line").attr("y1", 0).attr("y2", height).attr("stroke", "var(--bs-body-color)").attr("stroke-dasharray", "3,3").style("opacity", 0);
 
     tracker.on("mousemove", function () {
         const mx = d3.mouse(this)[0];
@@ -250,7 +245,7 @@ function renderBatteryArea(container, data) {
 
     // Interactive points
     g.selectAll("circle").data(data).enter().append("circle")
-        .attr("cx", d => x(d.hour)).attr("cy", d => y(d.battery_soc_kwh)).attr("r", 4).attr("fill", "#fff").attr("stroke", "#059669").attr("stroke-width", 2)
+        .attr("cx", d => x(d.hour)).attr("cy", d => y(d.battery_soc_kwh)).attr("r", 4).attr("fill", "var(--bs-body-bg)").attr("stroke", "#059669").attr("stroke-width", 2)
         .on("mouseover", function (d) {
             d3.select(this).attr("r", 7);
             tooltip.style("opacity", 1).html(`<strong>Hour: ${d.hour}:00</strong><br/>Avg Battery: ${d.battery_soc_kwh.toFixed(2)} kWh`);
@@ -288,8 +283,8 @@ function renderBubbleChart(container, data) {
     // Axes
     g.append("g").attr("transform", `translate(0, ${height})`).call(d3.axisBottom(x));
     g.append("g").call(d3.axisLeft(y).tickFormat(d => `$${d}`));
-    g.append("text").attr("x", width / 2).attr("y", height + 40).attr("text-anchor", "middle").style("font-size", "12px").text("Energy Exported to Grid (kWh)");
-    g.append("text").attr("transform", "rotate(-90)").attr("x", -height / 2).attr("y", -45).attr("text-anchor", "middle").style("font-size", "12px").text("Estimated Savings ($)");
+    g.append("text").attr("x", width / 2).attr("y", height + 40).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "var(--bs-body-color)").text("Energy Exported to Grid (kWh)");
+    g.append("text").attr("transform", "rotate(-90)").attr("x", -height / 2).attr("y", -45).attr("text-anchor", "middle").style("font-size", "12px").style("fill", "var(--bs-body-color)").text("Estimated Savings ($)");
 
     // Bubbles
     g.selectAll("circle").data(data).enter().append("circle")
@@ -297,9 +292,9 @@ function renderBubbleChart(container, data) {
         .attr("cy", d => y(d.savings_dollars))
         .attr("r", d => r(d.self_consumption_kw))
         .attr("fill", d => color(d.wealth_level))
-        .attr("opacity", 0.7).attr("stroke", "#fff").attr("stroke-width", 1)
+        .attr("opacity", 0.7).attr("stroke", "var(--bs-body-bg)").attr("stroke-width", 1)
         .on("mouseover", function (d) {
-            d3.select(this).attr("opacity", 1).attr("stroke", "#333").attr("stroke-width", 2);
+            d3.select(this).attr("opacity", 1).attr("stroke", "var(--bs-body-color)").attr("stroke-width", 2);
             tooltip.style("opacity", 1).html(`
                 <strong>${d.house_id} (${d.house_type.replace("_", " ")})</strong><br/>
                 Wealth: ${d.wealth_level.replace("_", " ")}<br/>
@@ -310,7 +305,7 @@ function renderBubbleChart(container, data) {
             `);
         })
         .on("mousemove", () => tooltip.style("left", (d3.event.pageX + 15) + "px").style("top", (d3.event.pageY - 40) + "px"))
-        .on("mouseout", function () { d3.select(this).attr("opacity", 0.7).attr("stroke", "#fff").attr("stroke-width", 1); tooltip.style("opacity", 0); });
+        .on("mouseout", function () { d3.select(this).attr("opacity", 0.7).attr("stroke", "var(--bs-body-bg)").attr("stroke-width", 1); tooltip.style("opacity", 0); });
 }
 
 /* =======================================================================
@@ -366,5 +361,5 @@ function renderStackedChart(container, data) {
     const legend = svg.append("g").attr("transform", `translate(${width + margin.left + 20}, ${margin.top})`);
     const legendItem = legend.selectAll(".legend-item").data(subgroups.slice().reverse()).enter().append("g").attr("transform", (d, i) => `translate(0, ${i * 25})`);
     legendItem.append("rect").attr("width", 14).attr("height", 14).attr("rx", 3).attr("fill", d => color(d));
-    legendItem.append("text").attr("x", 20).attr("y", 12).style("font-size", "12px").text(d => d);
+    legendItem.append("text").attr("x", 20).attr("y", 12).style("font-size", "12px").style("fill", "var(--bs-body-color)").text(d => d);
 }
