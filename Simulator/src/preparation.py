@@ -16,25 +16,35 @@ def process_simulation_data(csv_path):
     """Processes the CSV and extracts metrics for the Dashboard."""
     df = pd.read_csv(csv_path)
 
-    # 1. Prepare the Duck Curve & Battery Utilization
+    # Prepare the Duck Curve & Battery Utilization
     # Calculate the net load (Consumption - Solar) for each hour
     df['net_load_kw'] = df['load_kw'] - df['solar_gen_kw']
     # ADDED: 'battery_soc_kwh' to see how the battery behaves during the day
     duck_curve = df.groupby('hour')[['load_kw', 'solar_gen_kw', 'net_load_kw', 'battery_soc_kwh']].mean().reset_index()
 
-    # 2. Grouping by House Type
+    # Grouping by House Type
     by_house_type = df.groupby('house_type').agg({
         'load_kw': 'sum',
         'solar_gen_kw': 'sum',
         'self_consumption_kw': 'sum'
     }).reset_index()
 
-    # 3. Grouping by Wealth Level
+    # Grouping by Wealth Level
     by_wealth = df.groupby('wealth_level').agg({
         'load_kw': 'sum',
         'solar_gen_kw': 'sum',
         'self_consumption_kw': 'sum'
     }).reset_index()
+
+    # By House 
+    by_house = df.groupby(['house_id', 'house_type', 'wealth_level']).agg({
+        'grid_export_kw': 'sum',
+        'cost_cents': lambda x: (x.sum() / 100), # Net cost
+        'self_consumption_kw': 'sum'
+    }).reset_index()
+
+    # Calculate savings per house (Self-consumption * rate)
+    by_house['savings_dollars'] = (by_house['self_consumption_kw'] * 75) / 100
 
     # Peak times calculations
     peak_load_hour = df.groupby('hour')['load_kw'].mean().idxmax()
@@ -45,7 +55,7 @@ def process_simulation_data(csv_path):
     total_self_consumed_kwh = float(df['self_consumption_kw'].sum())
     savings_dollars = (total_self_consumed_kwh * 75) / 100 
 
-    # 4. General Summary (Enhanced)
+    # General Summary (Enhanced)
     summary = {
         'total_load': float(df['load_kw'].sum()),
         'total_solar': float(df['solar_gen_kw'].sum()),
@@ -63,7 +73,8 @@ def process_simulation_data(csv_path):
         "summary": summary,
         "duck_curve": duck_curve.to_dict(orient='records'),
         "by_house_type": by_house_type.to_dict(orient='records'),
-        "by_wealth": by_wealth.to_dict(orient='records')
+        "by_wealth": by_wealth.to_dict(orient='records'),
+        "by_house": by_house.to_dict(orient='records')
     }
 
     return dashboard_data
@@ -72,7 +83,7 @@ def export_to_dashboard(dashboard_data):
     """Saves the JSON directly to the GitHub Pages web folder."""
     # Go up one level from src/ and enter docs/
     base_dir = Path(__file__).resolve().parent.parent
-    docs_dir = base_dir / 'docs'
+    docs_dir = base_dir / 'export'
     
     # Create the folder if it doesn't exist
     docs_dir.mkdir(exist_ok=True)

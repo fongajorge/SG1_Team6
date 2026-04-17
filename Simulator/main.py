@@ -117,8 +117,9 @@ if __name__ == "__main__":
         print_summary(results_df)
 
         # 6. Run pipeline
-        print("\n⚙️ Preparando datos para el Dashboard...")
+        print("\n⚙️ Preparing dashboard data...")
         run_pipeline()
 
     except Exception as e:
         print(f"\n❌ Error running simulation: {e}")
+        

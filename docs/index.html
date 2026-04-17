@@ -1,69 +1,134 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <title>Template</title>
-    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Green Grid Dashboard</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Custom styling -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <h1 class = "dashboard-title">
-        Green Grid Simulation 
-    <span> Results Dashboard </span> 
-    </h1>
-    <div class = "dashboard-title-decor"></div>
+<body class="bg-light">
 
-    <div class="container mt-4">
-    <div class="row g-4">
+    <div class="container mt-5 mb-5">
+        <header class="pb-3 mb-4 border-bottom d-flex align-items-center">
+            <div>
+                <img src="img/icon.png?v=1" alt="Green Grid Icon" class="me-3" style="width: 60px; height: auto;">
 
-        <div class="col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Total production vs Consumption</h5>
-                    <div id="chart1"></div>
+                <h1 class="display-5 fw-bold text-dark mb-0">
+                    Green Grid Simulation
+                    <span class="text-success">Results Dashboard</span>
+                </h1>
+                <p class="fs-5 text-muted mb-0">Interactive analysis of neighborhood energy consumption, solar
+                    generation, and battery storage.</p>
+            </div>
+        </header>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card text-white bg-success h-100 shadow-sm border-0">
+                    <div class="card-body text-center d-flex flex-column justify-content-center py-4">
+                        <h6 class="text-white text-uppercase mb-2 fw-semibold">Estimated Savings</h6>
+                        <h2 id="kpi-savings" class="mb-0 fw-bold display-6">$0.00</h2>
+                        <small class="text-white mt-2 opacity-75">From solar self-consumption</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-white bg-primary h-100 shadow-sm border-0">
+                    <div class="card-body text-center d-flex flex-column justify-content-center py-4">
+                        <h6 class="text-white text-uppercase mb-2 fw-semibold">Total Solar Generated</h6>
+                        <h2 id="kpi-solar" class="mb-0 fw-bold display-6">0 kWh</h2>
+                        <small class="text-white mt-2 opacity-75">Clean energy produced</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-dark bg-warning h-100 shadow-sm border-0">
+                    <div class="card-body text-center d-flex flex-column justify-content-center py-4">
+                        <h6 class="text-dark text-uppercase mb-2 fw-semibold">Peak Load Hour</h6>
+                        <h2 id="kpi-peak" class="mb-0 fw-bold display-6 text-dark">0:00</h2>
+                        <small class="text-dark mt-2 opacity-75">Highest grid stress</small>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Donut Chart</h5>
-                    <div id="chart2"></div>
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-secondary mb-4 fw-bold">Production vs. Consumption by House Type</h5>
+                        <div id="chart1" class="d-flex justify-content-center w-100 overflow-hidden"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Stacked Chart</h5>
-                    <div id="chart3"></div>
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-secondary mb-4 fw-bold">Production vs. Consumption by Wealth Level
+                        </h5>
+                        <div id="chart2" class="d-flex justify-content-center w-100 overflow-hidden"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-md-6">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Line Chart</h5>
-                    <div id="chart4"></div>
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-secondary mb-4 fw-bold">Energy Destination & Grid Export</h5>
+                        <div id="chart3" class="d-flex justify-content-center w-100 overflow-hidden"></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-secondary mb-4 fw-bold">The Duck Curve & Grid Stress</h5>
+                        <div id="chart4" class="d-flex justify-content-center w-100 overflow-hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-secondary mb-4 fw-bold">Battery Storage Utilization</h5>
+                        <div id="chart5" class="d-flex justify-content-center w-100 overflow-hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-secondary mb-4 fw-bold">Energy Independence by Wealth Level</h5>
+                        <div id="chart7" class="d-flex justify-content-center w-100 overflow-hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mx-auto">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h5 class="card-title text-secondary mb-4 fw-bold">Cost Savings vs. Energy Export per Household
+                        </h5>
+                        <div id="chart6" class="d-flex justify-content-center w-100 overflow-hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>                
 
-<!-- External JS libraries -->
-<script src="js/d3.min.js"></script>
-
-<!-- Custom JS -->
-<script src="js/main.js"></script>
-
+    <script src="js/d3.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
