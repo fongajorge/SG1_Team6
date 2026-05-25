@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from ml_model import CustomLinearRegression, CustomScaler
+from ml_model import linear_regression, scaler
 
 # ---------------------------------------------------------
 # MATHEMATICAL FORMULAS
@@ -22,7 +22,7 @@ def calculate_r2(y_true, y_pred):
 
 def run_evaluation():
     print("Loading cleaned data...")
-    df = pd.read_csv('Cleaned_Solar_Weather_Dataset.csv')
+    df = pd.read_csv('clean_dataset.csv')
     y = df['Solar_Generation_kW'].values
     
     # ---------------------------------------------------------
@@ -31,10 +31,10 @@ def run_evaluation():
     features_A = ['Temperature_C', 'Humidity_percent', 'Irradiance_Wm2']
     X_A = df[features_A].values
     
-    scaler_A = CustomScaler()
+    scaler_A = scaler()
     X_A_scaled = scaler_A.fit_transform(X_A)
     
-    model_A = CustomLinearRegression(learning_rate=0.01, iterations=1500)
+    model_A = linear_regression(learning_rate=0.01, iterations=1500)
     model_A.fit(X_A_scaled, y)
     y_pred_A = model_A.predict(X_A_scaled)
 
@@ -44,10 +44,10 @@ def run_evaluation():
     features_B = ['Irradiance_Wm2']
     X_B = df[features_B].values
     
-    scaler_B = CustomScaler()
+    scaler_B = scaler()
     X_B_scaled = scaler_B.fit_transform(X_B)
     
-    model_B = CustomLinearRegression(learning_rate=0.01, iterations=1500)
+    model_B = linear_regression(learning_rate=0.01, iterations=1500)
     model_B.fit(X_B_scaled, y)
     y_pred_B = model_B.predict(X_B_scaled)
 
