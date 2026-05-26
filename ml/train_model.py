@@ -25,9 +25,7 @@ print("Starting Automated Grid Search for the Best ML Brain...")
 # 1. LOAD DATA (Dynamic path to the simulator folder)
 # ---------------------------------------------------------
 current_dir = os.path.dirname(os.path.abspath(__file__))
-# Points to GreenGridSim/simulator/clean_dataset.csv
 data_path = os.path.join(current_dir, '..', 'simulator', 'clean_dataset.csv')
-
 df = pd.read_csv(data_path)
 X = df[['Temperature_C', 'Humidity_percent', 'Irradiance_Wm2']].values
 y = df['Solar_Generation_kW'].values

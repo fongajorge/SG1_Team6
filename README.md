@@ -18,7 +18,6 @@ GreenGridSim
 ├── docs/                        # Web dashboard (GitHub Pages) and reports
 ├── ml/                          # Machine Learning Training Sandbox
 │    ├── outputs/               # Auto-generated evaluation charts (.png)
-│    ├── clean_dataset.csv      # Source historical weather/solar data
 │    ├── evaluate_model.py      # Calculates metrics (MSE, MAE, R2) and charts
 │    └── train_model.py         # Grid search script to fit and export the .pkl
 ├── simulator/                   # Production Simulation Environment
@@ -32,7 +31,7 @@ GreenGridSim
 │    │    ├── strategy.py       # Energy Management Strategies (EMS)    
 │    │    ├── ml_model.py       # Custom Linear Regression algorithm and Scaler
 │    │    └── trained_brain.pkl # The active serialized ML model
-│    ├── Cleaned_Solar_Weather_Dataset.csv # Active dataset used by the environment
+│    ├── clean_dataset.csv      # Active dataset used by the environment
 │    └── main.py                # Entry point to run the standalone simulation
 ├── run_pipeline.py              # Master script to automate ML training -> Sim -> Dashboard
 └── README.md

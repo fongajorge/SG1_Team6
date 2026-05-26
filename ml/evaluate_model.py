@@ -29,7 +29,9 @@ def calculate_r2(y_true, y_pred):
 
 def run_evaluation():
     print("Loading cleaned data...")
-    df = pd.read_csv('clean_dataset.csv')
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(current_dir, '..', 'simulator', 'clean_dataset.csv')
+    df = pd.read_csv(data_path)
     y = df['Solar_Generation_kW'].values
     
     # ---------------------------------------------------------
