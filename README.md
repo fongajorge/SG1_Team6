@@ -8,7 +8,7 @@ Built with `SimPy`, this project allows for the evaluation of performance, cost-
 
 ## 📂 Project Structure
 
-The project is organized into modular components to separate configuration, physical modeling, and control logic. It now includes a custom Machine Learning pipeline to drive physical predictions:
+The project is organized into modular components to separate configuration, physical modeling, and control logic. It now features a clean separation between the Machine Learning training sandbox and the Production simulation engine:
 
 ```text
 GreenGridSim
@@ -16,28 +16,27 @@ GreenGridSim
 ├── config/
 │   └── simulation_config.yaml  # Simulation parameters (Battery, Solar, Strategy)
 ├── docs/                        # Web dashboard (GitHub Pages) and reports
-├── Cleaned_Solar_Weather_Dataset.csv # Normalized historical weather and solar generation data
-├── trained_brain.pkl            # Serialized custom Linear Regression model (Weights, Bias, Scaler)
-├── simulator/
-│    ├── main.py                # Entry point to run the simulation
-│    ├── outputs/               # Generated CSV results
-│    └── src/                   # Source code package
-│         ├── components.py     # Hardware models (Battery, Inverter, Panels)
-│         ├── engine.py         # SimPy orchestration logic
-│         ├── environment.py    # Weather and Load stochastic models
-│         ├── neighborhood.py   # Neighborhood and House entity logic
-│         ├── preparation.py    # Data processing for the dashboard
-│         ├── strategy.py       # Energy Management Strategies (EMS)    
-│         ├── ml_model.py       # Custom Linear Regression algorithm and Scaler (No external ML libs)
-│         ├── train_model.py    # Pipeline to fit the model and export the .pkl brain
-│         └── evaluate_model.py # Generates performance metrics (MSE, MAE, R-squared) and visual plots
-├── ml/                          # Machine Learning Pipeline
-│    ├── clean_dataset.csv      # Cleaned historical weather/solar data
-│    ├── evaluate_model.py      # Calculates metrics and generates plots
-│    ├── ml_model.py            # Custom Linear Regression & Scaler math
-│    ├── train_model.py         # Trains the model and exports the .pkl
-│    └── trained_brain.pkl      # Serialized weights, bias, and scaler
+├── ml/                          # Machine Learning Training Sandbox
+│    ├── outputs/               # Auto-generated evaluation charts (.png)
+│    ├── clean_dataset.csv      # Source historical weather/solar data
+│    ├── evaluate_model.py      # Calculates metrics (MSE, MAE, R2) and charts
+│    └── train_model.py         # Grid search script to fit and export the .pkl
+├── simulator/                   # Production Simulation Environment
+│    ├── outputs/               # Generated CSV results from the simulation
+│    ├── src/                   # Source code package
+│    │    ├── components.py     # Hardware models (Battery, Inverter, Panels)
+│    │    ├── engine.py         # SimPy orchestration logic
+│    │    ├── environment.py    # Weather and Load stochastic models
+│    │    ├── neighborhood.py   # Neighborhood and House entity logic
+│    │    ├── preparation.py    # Data processing for the dashboard
+│    │    ├── strategy.py       # Energy Management Strategies (EMS)    
+│    │    ├── ml_model.py       # Custom Linear Regression algorithm and Scaler
+│    │    └── trained_brain.pkl # The active serialized ML model
+│    ├── Cleaned_Solar_Weather_Dataset.csv # Active dataset used by the environment
+│    └── main.py                # Entry point to run the standalone simulation
+├── run_pipeline.py              # Master script to automate ML training -> Sim -> Dashboard
 └── README.md
+
 ```
 
 ---
@@ -71,29 +70,26 @@ These parameters apply to the entire simulation environment.
 
 1. **Simulation Settings** `(simulation)`
 General parameters defining the scope and environment of the run.
+
 * `duration_days` (int): Total number of days to simulate (e.g., 30).
 * `time_step_minutes` (int): The granularity of the simulation step in minutes (e.g., 60 for hourly steps).
 * `season` (string): Defines weather patterns and cloud coverage probabilities. Options: `"Summer"`, `"Winter"`, `"Spring"`, `"Fall"`.
 * `start_date` (string): The start date for the data logs in YYYY-MM-DD format (e.g., "2026-12-24").
 
-
 2. **Utility Grid** `(grid)`
 Economic and physical connection to the grid.
+
 * `export_limit_kw` (float): Maximum power allowed to be sent back to the grid for the entire neighborhood in kW (e.g., 500.0).
 * `cost_import_cents` (float): Cost to buy electricity from the grid in cents/kWh (e.g., 0.75).
 * `price_export_cents` (float): Earnings for selling electricity to the grid in cents/kWh (e.g., 0.90).
 
-
 3. **Strategy** `(strategy)`
 The "Brain" of the system.
+
 * `name` (string): The Energy Management Strategy (EMS) to use for all connected houses.
 * `"LOAD_PRIORITY"`: Powers house first, then charges battery, then exports.
 * `"CHARGE_PRIORITY"`: Charges battery first, then powers house, then exports.
 * `"PRODUCE_PRIORITY"`: Exports to grid first, then charges battery, then powers house.
-
-
-
-
 
 ### II. House Profiles `(house_profiles)`
 
@@ -101,29 +97,28 @@ You can define multiple archetypes of homes (e.g., `Studio`, `Small_Family`, `La
 
 4. **Household Load** `(load)`
 Consumption profile of the specific house archetype.
+
 * `base_load_kw` (float): Constant background power demand (fridge, router, standby) in kW (e.g., 0.4).
 * `peak_load_kw` (float): Maximum random consumption spike added during peak hours in kW (e.g., 4.5).
 * `peak_start_hour` (int): Start hour (0-23) of the peak demand window (e.g., 18 for 6 PM).
 * `peak_end_hour` (int): End hour (0-23) of the peak demand window (e.g., 21 for 9 PM).
 
-
 5. **Battery Storage** `(hardware.battery)`
 Physical specifications of the home battery system.
+
 * `capacity` (float): Total energy capacity in kWh (e.g., 13.5).
 * `initial_state` (float): Starting State of Charge (SoC) as a decimal percentage (e.g., 0.0 for empty, 1.0 for full).
 * `efficiency` (float): Round-trip efficiency of the battery (e.g., 0.90 implies 10% energy loss).
 * `discharge_depth` (float): Minimum allowable SoC limit to protect battery health (e.g., 0.05 means the battery stops discharging at 5%).
 
-
 6. **Solar Generation** `(hardware.solar)`
 Parameters for the PV array and inverter hardware.
+
 * `panel_peak_kw` (float): Maximum DC power output of the solar panels in kW (e.g., 5.0).
 * `inverter_max_kw` (float): Maximum AC power output of the inverter (clipping limit) in kW (e.g., 4.0).
 * `inverter_failure_rate` (float): Probability of inverter failure per simulation step (e.g., 0.005 for 0.5%).
 * `failure_duration_min_hours` (int): Minimum downtime in hours if a failure occurs (e.g., 4).
 * `failure_duration_max_hours` (int): Maximum downtime in hours if a failure occurs (e.g., 72).
-
-
 
 ### III. Neighborhood Generation
 
@@ -131,69 +126,64 @@ These settings control how the individual profiles are scaled and deployed into 
 
 7. **Wealth Multipliers** `(wealth_multipliers)`
 Applies socio-economic scaling factors to the base house profiles. This multiplier affects both the energy consumption and the size of the hardware (batteries and panels).
+
 * `Low_Income` (float): Scales down the base profile (e.g., 0.7).
 * `Middle_Income` (float): Leaves the base profile as defined (e.g., 1.0).
 * `Luxury` (float): Scales up the base profile for high-end consumers (e.g., 1.5).
 
-
 8. **Neighborhood Composition** `(neighborhood_composition)`
 A dynamic list that populates the simulation with actual houses based on your profiles and multipliers. You can add as many groups as needed.
+
 * `profile` (string): The house archetype to use (e.g., `"Small_Family"`).
 * `wealth` (string): The socio-economic multiplier to apply (e.g., `"Middle_Income"`).
 * `count` (int): The number of identical houses to generate with these exact parameters (e.g., 15).
-
-
 
 ---
 
 ## 🧠 Predictive Digital Twin (Machine Learning)
 
-Instead of relying on hard-coded static formulas (like simple sine waves) to simulate solar generation, this engine features a **Predictive Digital Twin**.
+*Note: This module fulfills the core algorithm development requirement of the project by replacing hard-coded formulas with a purely data-driven model.*
 
-A custom **Multiple Linear Regression** algorithm is implemented from scratch (utilizing Gradient Descent and without the use of external ML libraries like `scikit-learn`) to read historical weather variables. The simulation feeds the time-step's real Temperature, Humidity, and Solar Irradiance into the serialized model to predict realistic solar energy generation on the fly.
+Instead of relying on static formulas (like simple sine waves) to simulate solar generation, this engine features a **Predictive Digital Twin**. A custom **Multiple Linear Regression** algorithm is implemented entirely from scratch (utilizing Gradient Descent and without the use of external ML libraries like `scikit-learn`).
 
-To ensure performance limits, the model was trained using customized mathematical tracking and data scaling methodologies, allowing stakeholders to evaluate accurate physical responses to real-world cloud coverage and atmospheric constraints.
+The simulation feeds the time-step's real Temperature, Humidity, and Solar Irradiance into the serialized model (`trained_brain.pkl`) to predict realistic solar energy generation on the fly.
+
+### Swapping the Dataset
+
+If you wish to simulate the microgrid in a completely different geographical climate, you can swap the foundational data:
+
+1. Obtain a new dataset containing hourly Temperature, Humidity, and Irradiance.
+2. Rename the file to `Cleaned_Solar_Weather_Dataset.csv` and place it directly inside the `simulator/` folder, replacing the existing file.
+3. Re-run the automated pipeline (see below). The system will automatically read the new weather patterns, retrain the brain to understand the new climate, and execute the simulation based on those new parameters.
 
 ---
 
-## ▶️ Usage
+## ▶️ Usage & Execution
 
-To execute the entire pipeline, start by training the brain, generating your metrics, and finally running the simulation.
+The project features an automated master script that handles the entire pipeline end-to-end.
 
-**1. Train the ML Model (Only needed once)**
+### 1. The "One-Click" Pipeline (Recommended)
+
+From the root directory of the project, simply run:
 
 ```bash
-cd simulator/src
-python train_model.py
+python run_pipeline.py
 
 ```
 
-*This reads the CSV dataset, normalizes features, trains the Gradient Descent algorithm, and outputs `trained_brain.pkl`.*
+**What happens automatically?**
 
-**2. Evaluate the Model (Optional)**
+1. **Hyperparameter Grid Search:** The `train_model.py` script tests multiple learning rates and iterations, finds the most accurate parameters, trains the ML Brain, and deploys `trained_brain.pkl` directly to the `simulator/src/` folder.
+2. **Simulation:** The SimPy engine executes `main.py`, reading the weather data and utilizing the newly trained brain to calculate physics and economics.
+3. **Data Preparation:** The output CSV is instantly processed into a lightweight JSON format for the web.
+4. **Dashboard Launch:** A local web server spins up, and your default browser opens the interactive dashboard automatically.
 
-```bash
-python evaluate_model.py
+### 2. Manual / Granular Execution
 
-```
+If you only want to use specific parts of the ML pipeline (for example, to evaluate performance metrics for a report without running a full simulation):
 
-*Calculates MSE, MAE, and R-squared manually, generating comparative `.png` charts to visualize real vs. predicted data.*
-
-**3. Run the Simulation**
-
-```bash
-cd ../..
-python main.py
-
-```
-
-**What happens next?**
-
-* The system loads settings from the YAML config.
-* The SimPy engine awakens the Predictive Digital Twin via `pickle`.
-* The simulation calculates physics and economics based on the predicted solar values.
-* A summary is printed to the console, and a CSV log is saved in outputs/.
-* The data is automatically processed and exported to docs/dashboard_data.json for the web dashboard.
+* **Evaluate the Model:** Run `python evaluate_model.py` from inside the `ml/` folder. It will calculate the MSE, MAE, and R-squared manually, and generate comparative `.png` charts into the `ml/outputs/` directory to visualize real vs. predicted data.
+* **Run Simulation Only:** If the brain is already trained, you can execute `python main.py` directly from the `simulator/` folder.
 
 ---
 
@@ -209,12 +199,10 @@ The project features a high-fidelity web dashboard located in the `docs/` folder
 * **Battery Utilization:** Tracks how storage systems mitigate grid stress by storing energy during surplus and discharging during peaks.
 * **Household Analytics:** A detailed bubble chart mapping individual house performance, comparing cost savings against energy exported to the grid.
 
-To view the dashboard, you can access the hosted webpage [Green Grid Simulation Results Dashboard](https://jfong088.github.io/SG1_Team6/), or serve the `docs/` folder using a local web server (e.g., `python -m http.server` inside the `docs/` directory) and open `index.html` in your browser at `localhost:8000`.
+To view the dashboard manually, serve the `docs/` folder using a local web server (e.g., `python -m http.server` inside the `docs/` directory) and open `index.html` in your browser at `localhost:8000`.
 
 ---
 
 ## 📊 Outputs & Visualization
 
-Results are generated in CSV format in the outputs/ folder. For a visual and interactive analysis, open the docs/index.html file using a local web server to view the results on the Results Dashboard by following the instructions above.
-
----
+Raw numerical results are generated in CSV format in the `simulator/outputs/` folder upon every successful run.
