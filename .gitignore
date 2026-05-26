@@ -3,3 +3,6 @@ outputs/
 .vscode/
 export/
 __pycache__/
+
+# Specific files to ignore
+clean_dataset_old.csv

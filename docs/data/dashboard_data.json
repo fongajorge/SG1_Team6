@@ -1,223 +1,223 @@
 {
     "summary": {
-        "total_load": 25891.361742901085,
-        "total_solar": 18484.47196724036,
-        "total_import": 12444.183015063216,
-        "total_export": 4197.416815421508,
-        "net_cost": 5555.462127418054,
-        "total_self_consumption": 14287.055151818851,
-        "estimated_savings_dollars": 10715.291363864138,
+        "total_load": 25931.278070838198,
+        "total_solar": 9908.50705110007,
+        "total_import": 16800.666196358594,
+        "total_export": 273.2035514298609,
+        "net_cost": 12354.61645098207,
+        "total_self_consumption": 9635.303499670212,
+        "estimated_savings_dollars": 7226.477624752659,
         "peak_load_hour": 20,
         "peak_solar_hour": 12
     },
     "duck_curve": [
         {
             "hour": 0.0,
-            "load_kw": 0.6767501938604448,
+            "load_kw": 0.6727085089321866,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 0.6767501938604448,
-            "battery_soc_kwh": 0.5230603753959843
+            "net_load_kw": 0.6727085089321866,
+            "battery_soc_kwh": 0.4233737935124585
         },
         {
             "hour": 1.0,
-            "load_kw": 0.6742391345049785,
+            "load_kw": 0.6792325730478925,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 0.6742391345049785,
-            "battery_soc_kwh": 0.48948977971460833
+            "net_load_kw": 0.6792325730478925,
+            "battery_soc_kwh": 0.4143550840149582
         },
         {
             "hour": 2.0,
-            "load_kw": 0.6815496027623494,
+            "load_kw": 0.6819307330944393,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 0.6815496027623494,
-            "battery_soc_kwh": 0.468955655497731
+            "net_load_kw": 0.6819307330944393,
+            "battery_soc_kwh": 0.4088462744053318
         },
         {
             "hour": 3.0,
-            "load_kw": 0.6776450874744245,
+            "load_kw": 0.6799070994822805,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 0.6776450874744245,
-            "battery_soc_kwh": 0.45520777115022387
+            "net_load_kw": 0.6799070994822805,
+            "battery_soc_kwh": 0.40644064782749456
         },
         {
             "hour": 4.0,
-            "load_kw": 0.6799384478690045,
+            "load_kw": 0.6770345144537252,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 0.6799384478690045,
-            "battery_soc_kwh": 0.4472213748869009
+            "net_load_kw": 0.6770345144537252,
+            "battery_soc_kwh": 0.40498907799265077
         },
         {
             "hour": 5.0,
-            "load_kw": 0.6709300103066927,
+            "load_kw": 0.67833917863823,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 0.6709300103066927,
-            "battery_soc_kwh": 0.4424442334249996
+            "net_load_kw": 0.67833917863823,
+            "battery_soc_kwh": 0.4040953916702846
         },
         {
             "hour": 6.0,
-            "load_kw": 0.6766799258653011,
+            "load_kw": 0.6730624276852664,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 0.6766799258653011,
-            "battery_soc_kwh": 0.4397965426769964
+            "net_load_kw": 0.6730624276852664,
+            "battery_soc_kwh": 0.40363061242586656
         },
         {
             "hour": 7.0,
-            "load_kw": 0.690220420972394,
-            "solar_gen_kw": 0.6685614661279892,
-            "net_load_kw": 0.02165895484440477,
-            "battery_soc_kwh": 0.6304070980057658
+            "load_kw": 0.6819506216032526,
+            "solar_gen_kw": 0.09878141988917974,
+            "net_load_kw": 0.5831692017140728,
+            "battery_soc_kwh": 0.4033349379024295
         },
         {
             "hour": 8.0,
-            "load_kw": 0.6749382735530584,
-            "solar_gen_kw": 1.0602161976006426,
-            "net_load_kw": -0.3852779240475843,
-            "battery_soc_kwh": 1.1215040982363802
+            "load_kw": 0.6872494797935339,
+            "solar_gen_kw": 0.30741301288945827,
+            "net_load_kw": 0.3798364669040757,
+            "battery_soc_kwh": 0.4160893457377674
         },
         {
             "hour": 9.0,
-            "load_kw": 0.6676631235376326,
-            "solar_gen_kw": 1.7945126015743604,
-            "net_load_kw": -1.1268494780367277,
-            "battery_soc_kwh": 2.299417904417221
+            "load_kw": 0.6761935781105937,
+            "solar_gen_kw": 0.7833949722516717,
+            "net_load_kw": -0.10720139414107802,
+            "battery_soc_kwh": 0.6912918726080739
         },
         {
             "hour": 10.0,
-            "load_kw": 0.6712931714115365,
-            "solar_gen_kw": 2.0815562530686242,
-            "net_load_kw": -1.4102630816570876,
-            "battery_soc_kwh": 3.742314254064538
+            "load_kw": 0.6784789869640031,
+            "solar_gen_kw": 1.2206841889227638,
+            "net_load_kw": -0.5422052019587605,
+            "battery_soc_kwh": 1.3345505224172107
         },
         {
             "hour": 11.0,
-            "load_kw": 0.6821736545091496,
-            "solar_gen_kw": 2.246505919327437,
-            "net_load_kw": -1.5643322648182871,
-            "battery_soc_kwh": 5.271003128810471
+            "load_kw": 0.6859435600071493,
+            "solar_gen_kw": 1.4912334350734027,
+            "net_load_kw": -0.8052898750662533,
+            "battery_soc_kwh": 2.2161906584835314
         },
         {
             "hour": 12.0,
-            "load_kw": 0.6844426998704399,
-            "solar_gen_kw": 2.5247097458158216,
-            "net_load_kw": -1.8402670459453816,
-            "battery_soc_kwh": 6.706657434143992
+            "load_kw": 0.6733704916514067,
+            "solar_gen_kw": 1.548577611798288,
+            "net_load_kw": -0.8752071201468814,
+            "battery_soc_kwh": 3.1698766674137717
         },
         {
             "hour": 13.0,
-            "load_kw": 0.680449885023176,
-            "solar_gen_kw": 1.762440304784965,
-            "net_load_kw": -1.081990419761789,
-            "battery_soc_kwh": 7.061471920204648
+            "load_kw": 0.6780518209009353,
+            "solar_gen_kw": 1.445685133912823,
+            "net_load_kw": -0.7676333130118876,
+            "battery_soc_kwh": 3.990333700286571
         },
         {
             "hour": 14.0,
-            "load_kw": 0.6777138007497486,
-            "solar_gen_kw": 1.9061743686196226,
-            "net_load_kw": -1.228460567869874,
-            "battery_soc_kwh": 7.370049704845601
+            "load_kw": 0.6785324114866208,
+            "solar_gen_kw": 1.197222119535805,
+            "net_load_kw": -0.5186897080491845,
+            "battery_soc_kwh": 4.525418488313991
         },
         {
             "hour": 15.0,
-            "load_kw": 0.6692136758336467,
-            "solar_gen_kw": 1.6623693917324356,
-            "net_load_kw": -0.9931557158987888,
-            "battery_soc_kwh": 7.46593147431685
+            "load_kw": 0.6837874802771089,
+            "solar_gen_kw": 0.8555873044421564,
+            "net_load_kw": -0.1717998241650474,
+            "battery_soc_kwh": 4.713205716447246
         },
         {
             "hour": 16.0,
-            "load_kw": 0.6753972105298036,
-            "solar_gen_kw": 1.2535320800265601,
-            "net_load_kw": -0.5781348694967565,
-            "battery_soc_kwh": 7.531078694042678
+            "load_kw": 0.6755028128670634,
+            "solar_gen_kw": 0.40657776738621765,
+            "net_load_kw": 0.2689250454808458,
+            "battery_soc_kwh": 4.569874179958206
         },
         {
             "hour": 17.0,
-            "load_kw": 0.6855392418310693,
-            "solar_gen_kw": 0.6436806877409309,
-            "net_load_kw": 0.04185855409013837,
-            "battery_soc_kwh": 7.402613531756695
+            "load_kw": 0.673879505984085,
+            "solar_gen_kw": 0.08151641589830182,
+            "net_load_kw": 0.5923630900857831,
+            "battery_soc_kwh": 4.154803879924508
         },
         {
             "hour": 18.0,
-            "load_kw": 2.7775302336556087,
-            "solar_gen_kw": 3.146944250767396e-16,
-            "net_load_kw": 2.7775302336556082,
-            "battery_soc_kwh": 4.915966846286579
+            "load_kw": 2.7271510623003774,
+            "solar_gen_kw": 0.0,
+            "net_load_kw": 2.7271510623003774,
+            "battery_soc_kwh": 2.5464200041190805
         },
         {
             "hour": 19.0,
-            "load_kw": 2.731541298516295,
+            "load_kw": 2.756501300085971,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 2.731541298516295,
-            "battery_soc_kwh": 2.90007144386082
+            "net_load_kw": 2.756501300085971,
+            "battery_soc_kwh": 1.4253284741160472
         },
         {
             "hour": 20.0,
-            "load_kw": 2.8218996154662723,
+            "load_kw": 2.8427553526505607,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 2.8218996154662723,
-            "battery_soc_kwh": 1.454200726992828
+            "net_load_kw": 2.8427553526505607,
+            "battery_soc_kwh": 0.7847683862373019
         },
         {
             "hour": 21.0,
-            "load_kw": 2.7699343360030206,
+            "load_kw": 2.8002179366301188,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 2.7699343360030206,
-            "battery_soc_kwh": 0.7472900593673288
+            "net_load_kw": 2.8002179366301188,
+            "battery_soc_kwh": 0.5113325963232921
         },
         {
             "hour": 22.0,
-            "load_kw": 0.6853536126111888,
+            "load_kw": 0.6783360256470435,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 0.6853536126111888,
-            "battery_soc_kwh": 0.6512077499744302
+            "net_load_kw": 0.6783360256470435,
+            "battery_soc_kwh": 0.4771706243299308
         },
         {
             "hour": 23.0,
-            "load_kw": 0.6754030984266515,
+            "load_kw": 0.6763378432663414,
             "solar_gen_kw": 0.0,
-            "net_load_kw": 0.6754030984266515,
-            "battery_soc_kwh": 0.5865738770214451
+            "net_load_kw": 0.6763378432663414,
+            "battery_soc_kwh": 0.4529045166439254
         }
     ],
     "by_house_type": [
         {
             "house_type": "Large_Family",
-            "load_kw": 9087.183110213646,
-            "solar_gen_kw": 4437.6107541286265,
-            "self_consumption_kw": 3884.449517350693
+            "load_kw": 9091.030814963615,
+            "solar_gen_kw": 2368.347966741307,
+            "self_consumption_kw": 2367.3005213407964
         },
         {
             "house_type": "Small_Family",
-            "load_kw": 13815.888189275503,
-            "solar_gen_kw": 10668.096947554124,
-            "self_consumption_kw": 8326.734750053654
+            "load_kw": 13899.077411090073,
+            "solar_gen_kw": 5768.1093499280305,
+            "self_consumption_kw": 5670.953356692766
         },
         {
             "house_type": "Studio",
-            "load_kw": 2988.2904434119323,
-            "solar_gen_kw": 3378.7642655576074,
-            "self_consumption_kw": 2075.8708844145026
+            "load_kw": 2941.1698447845074,
+            "solar_gen_kw": 1772.049734430734,
+            "self_consumption_kw": 1597.0496216366487
         }
     ],
     "by_wealth": [
         {
             "wealth_level": "Low_Income",
-            "load_kw": 2988.2904434119323,
-            "solar_gen_kw": 3378.7642655576074,
-            "self_consumption_kw": 2075.8708844145026
+            "load_kw": 2941.1698447845074,
+            "solar_gen_kw": 1772.049734430734,
+            "self_consumption_kw": 1597.0496216366487
         },
         {
             "wealth_level": "Luxury",
-            "load_kw": 9087.183110213646,
-            "solar_gen_kw": 4437.6107541286265,
-            "self_consumption_kw": 3884.449517350693
+            "load_kw": 9091.030814963615,
+            "solar_gen_kw": 2368.347966741307,
+            "self_consumption_kw": 2367.3005213407964
         },
         {
             "wealth_level": "Middle_Income",
-            "load_kw": 13815.888189275503,
-            "solar_gen_kw": 10668.096947554124,
-            "self_consumption_kw": 8326.734750053654
+            "load_kw": 13899.077411090073,
+            "solar_gen_kw": 5768.1093499280305,
+            "self_consumption_kw": 5670.953356692766
         }
     ],
     "by_house": [
@@ -225,316 +225,316 @@
             "house_id": "house_1",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 113.43228854044747,
-            "cost_cents": -8.981124487091815,
-            "self_consumption_kw": 188.09306249373475,
-            "savings_dollars": 141.06979687030108
+            "grid_export_kw": 21.08790596293191,
+            "cost_cents": 79.86762082744643,
+            "self_consumption_kw": 179.2863025664333,
+            "savings_dollars": 134.46472692482496
         },
         {
             "house_id": "house_10",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 138.94335707068515,
-            "cost_cents": -50.16175191910897,
-            "self_consumption_kw": 216.12936958236045,
-            "savings_dollars": 162.09702718677033
+            "grid_export_kw": 20.265724206933665,
+            "cost_cents": 84.59167786665685,
+            "self_consumption_kw": 173.48206092523367,
+            "savings_dollars": 130.11154569392525
         },
         {
             "house_id": "house_11",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 118.2319824829994,
-            "cost_cents": 109.90166282789724,
-            "self_consumption_kw": 435.78320564827357,
-            "savings_dollars": 326.8374042362052
+            "grid_export_kw": 1.8095047006869156,
+            "cost_cents": 349.67576458567856,
+            "self_consumption_kw": 244.19078372406545,
+            "savings_dollars": 183.1430877930491
         },
         {
             "house_id": "house_12",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 117.81729876308555,
-            "cost_cents": 136.3194204837912,
-            "self_consumption_kw": 405.5943446338545,
-            "savings_dollars": 304.1957584753909
+            "grid_export_kw": 6.020423588155255,
+            "cost_cents": 310.43262728295844,
+            "self_consumption_kw": 302.46675908841496,
+            "savings_dollars": 226.85006931631125
         },
         {
             "house_id": "house_13",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 115.55531575101463,
-            "cost_cents": 105.07742936089191,
-            "self_consumption_kw": 448.2727838445506,
-            "savings_dollars": 336.20458788341296
+            "grid_export_kw": 3.4816262882520803,
+            "cost_cents": 328.2729908881693,
+            "self_consumption_kw": 270.8026281725851,
+            "savings_dollars": 203.10197112943882
         },
         {
             "house_id": "house_14",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 124.25663149246856,
-            "cost_cents": 95.65486733768519,
-            "self_consumption_kw": 464.2639599014835,
-            "savings_dollars": 348.19796992611265
+            "grid_export_kw": 4.094791229969502,
+            "cost_cents": 298.3532892450043,
+            "self_consumption_kw": 305.9863260069529,
+            "savings_dollars": 229.48974450521465
         },
         {
             "house_id": "house_15",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 116.35052729435644,
-            "cost_cents": 131.3807408899615,
-            "self_consumption_kw": 394.62201864183123,
-            "savings_dollars": 295.96651398137345
+            "grid_export_kw": 4.986869881170508,
+            "cost_cents": 322.38348166460923,
+            "self_consumption_kw": 287.62753693541543,
+            "savings_dollars": 215.7206527015616
         },
         {
             "house_id": "house_16",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 129.08073026617996,
-            "cost_cents": 82.96075908915108,
-            "self_consumption_kw": 437.36028688611555,
-            "savings_dollars": 328.0202151645866
+            "grid_export_kw": 4.490444885502477,
+            "cost_cents": 317.2521229779005,
+            "self_consumption_kw": 271.4463707316349,
+            "savings_dollars": 203.58477804872615
         },
         {
             "house_id": "house_17",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 103.26036731248851,
-            "cost_cents": 150.99251730765639,
-            "self_consumption_kw": 388.15456440265126,
-            "savings_dollars": 291.11592330198846
+            "grid_export_kw": 2.729410696280001,
+            "cost_cents": 331.1264074914081,
+            "self_consumption_kw": 247.39449096928615,
+            "savings_dollars": 185.54586822696464
         },
         {
             "house_id": "house_18",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 101.84121143784623,
-            "cost_cents": 187.1931268428186,
-            "self_consumption_kw": 339.42183793694545,
-            "savings_dollars": 254.5663784527091
+            "grid_export_kw": 5.285950108784807,
+            "cost_cents": 337.574836250756,
+            "self_consumption_kw": 263.62580114807224,
+            "savings_dollars": 197.71935086105418
         },
         {
             "house_id": "house_19",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 104.11787281977898,
-            "cost_cents": 128.28240247423076,
-            "self_consumption_kw": 418.1235423194686,
-            "savings_dollars": 313.59265673960147
+            "grid_export_kw": 5.458390680135593,
+            "cost_cents": 281.30851911840887,
+            "self_consumption_kw": 324.3412478570106,
+            "savings_dollars": 243.25593589275795
         },
         {
             "house_id": "house_2",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 120.55942658027561,
-            "cost_cents": -16.78249011942319,
-            "self_consumption_kw": 196.56589319229047,
-            "savings_dollars": 147.42441989421786
+            "grid_export_kw": 18.729442603115917,
+            "cost_cents": 99.87259188814946,
+            "self_consumption_kw": 151.10256210943345,
+            "savings_dollars": 113.32692158207509
         },
         {
             "house_id": "house_20",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 121.29704070376016,
-            "cost_cents": 138.98063263053294,
-            "self_consumption_kw": 382.9367818542239,
-            "savings_dollars": 287.20258639066793
+            "grid_export_kw": 6.700805397323014,
+            "cost_cents": 341.8827862187388,
+            "self_consumption_kw": 242.78868923601524,
+            "savings_dollars": 182.09151692701144
         },
         {
             "house_id": "house_21",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 123.272505248662,
-            "cost_cents": 95.0844885549318,
-            "self_consumption_kw": 457.5716508555898,
-            "savings_dollars": 343.1787381416923
+            "grid_export_kw": 5.188475804531479,
+            "cost_cents": 318.625560670214,
+            "self_consumption_kw": 253.38439396008934,
+            "savings_dollars": 190.03829547006703
         },
         {
             "house_id": "house_22",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 121.68118018511478,
-            "cost_cents": 113.06481202318959,
-            "self_consumption_kw": 444.6741225250651,
-            "savings_dollars": 333.50559189379885
+            "grid_export_kw": 6.2139489550761,
+            "cost_cents": 291.7432095510902,
+            "self_consumption_kw": 302.74691335567724,
+            "savings_dollars": 227.06018501675794
         },
         {
             "house_id": "house_23",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 118.33386152299302,
-            "cost_cents": 108.18116500597549,
-            "self_consumption_kw": 422.73030883670555,
-            "savings_dollars": 317.0477316275292
+            "grid_export_kw": 5.492081140444345,
+            "cost_cents": 317.2355543834679,
+            "self_consumption_kw": 284.6505076379713,
+            "savings_dollars": 213.48788072847847
         },
         {
             "house_id": "house_24",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 115.35240747089466,
-            "cost_cents": 120.28749744032264,
-            "self_consumption_kw": 406.2117875969579,
-            "savings_dollars": 304.6588406977184
+            "grid_export_kw": 4.961799215542298,
+            "cost_cents": 343.20697498059315,
+            "self_consumption_kw": 256.6529130350392,
+            "savings_dollars": 192.4896847762794
         },
         {
             "house_id": "house_25",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 109.0288248576835,
-            "cost_cents": 119.92944002515047,
-            "self_consumption_kw": 404.1370539428586,
-            "savings_dollars": 303.10279045714395
+            "grid_export_kw": 6.219004571295537,
+            "cost_cents": 296.3273692146935,
+            "self_consumption_kw": 327.48605389947113,
+            "savings_dollars": 245.61454042460338
         },
         {
             "house_id": "house_26",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 141.36052972375373,
-            "cost_cents": 46.52721463755104,
-            "self_consumption_kw": 459.72114917161565,
-            "savings_dollars": 344.7908618787117
+            "grid_export_kw": 6.3852232927998145,
+            "cost_cents": 308.23805035691015,
+            "self_consumption_kw": 298.5287796397524,
+            "savings_dollars": 223.89658472981426
         },
         {
             "house_id": "house_27",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 131.7322365001758,
-            "cost_cents": 81.48947674089925,
-            "self_consumption_kw": 455.2403267722934,
-            "savings_dollars": 341.43024507922
+            "grid_export_kw": 4.5568296502622205,
+            "cost_cents": 324.68159961124815,
+            "self_consumption_kw": 281.5786489832381,
+            "savings_dollars": 211.18398673742857
         },
         {
             "house_id": "house_28",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 116.55289812576576,
-            "cost_cents": 105.19844587087383,
-            "self_consumption_kw": 431.73606210486474,
-            "savings_dollars": 323.80204657864857
+            "grid_export_kw": 4.042395536219626,
+            "cost_cents": 279.15397145715167,
+            "self_consumption_kw": 313.81865820167303,
+            "savings_dollars": 235.3639936512548
         },
         {
             "house_id": "house_29",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 110.06056460161558,
-            "cost_cents": 155.57213071306015,
-            "self_consumption_kw": 391.2618788482033,
-            "savings_dollars": 293.44640913615245
+            "grid_export_kw": 3.9748879384934668,
+            "cost_cents": 307.34137399567754,
+            "self_consumption_kw": 299.5879664642046,
+            "savings_dollars": 224.69097484815345
         },
         {
             "house_id": "house_3",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 130.5814820818466,
-            "cost_cents": -47.94527129105545,
-            "self_consumption_kw": 216.25481418657643,
-            "savings_dollars": 162.19111063993233
+            "grid_export_kw": 17.510478191269815,
+            "cost_cents": 91.36529337914543,
+            "self_consumption_kw": 170.78263717464947,
+            "savings_dollars": 128.0869778809871
         },
         {
             "house_id": "house_30",
             "house_type": "Small_Family",
             "wealth_level": "Middle_Income",
-            "grid_export_kw": 102.17821093983282,
-            "cost_cents": 190.32210731157235,
-            "self_consumption_kw": 338.9170833301026,
-            "savings_dollars": 254.18781249757697
+            "grid_export_kw": 5.063129674339676,
+            "cost_cents": 318.81492331336733,
+            "self_consumption_kw": 291.84788764619617,
+            "savings_dollars": 218.88591573464714
         },
         {
             "house_id": "house_31",
             "house_type": "Large_Family",
             "wealth_level": "Luxury",
-            "grid_export_kw": 108.56719593524986,
-            "cost_cents": 741.8433777131957,
-            "self_consumption_kw": 708.5736635604082,
-            "savings_dollars": 531.4302476703062
+            "grid_export_kw": 0.0,
+            "cost_cents": 1034.4848094914473,
+            "self_consumption_kw": 425.869845134614,
+            "savings_dollars": 319.4023838509605
         },
         {
             "house_id": "house_32",
             "house_type": "Large_Family",
             "wealth_level": "Luxury",
-            "grid_export_kw": 114.87038739725061,
-            "cost_cents": 646.5952253554898,
-            "self_consumption_kw": 837.061539040446,
-            "savings_dollars": 627.7961542803345
+            "grid_export_kw": 0.1800920895176098,
+            "cost_cents": 1026.8268397045324,
+            "self_consumption_kw": 496.5486206864463,
+            "savings_dollars": 372.4114655148348
         },
         {
             "house_id": "house_33",
             "house_type": "Large_Family",
             "wealth_level": "Luxury",
-            "grid_export_kw": 76.05099906855271,
-            "cost_cents": 831.391144836678,
-            "self_consumption_kw": 679.8695458957521,
-            "savings_dollars": 509.90215942181413
+            "grid_export_kw": 0.5836017080162257,
+            "cost_cents": 992.3630885215666,
+            "self_consumption_kw": 486.3385901521898,
+            "savings_dollars": 364.7539426141424
         },
         {
             "house_id": "house_34",
             "house_type": "Large_Family",
             "wealth_level": "Luxury",
-            "grid_export_kw": 134.13786050224053,
-            "cost_cents": 626.3391126445841,
-            "self_consumption_kw": 878.0646447050837,
-            "savings_dollars": 658.5484835288128
+            "grid_export_kw": 0.0,
+            "cost_cents": 1082.9250669782577,
+            "self_consumption_kw": 449.65398163901983,
+            "savings_dollars": 337.2404862292649
         },
         {
             "house_id": "house_35",
             "house_type": "Large_Family",
             "wealth_level": "Luxury",
-            "grid_export_kw": 119.53479387463918,
-            "cost_cents": 691.3136420392964,
-            "self_consumption_kw": 780.8801241490031,
-            "savings_dollars": 585.6600931117523
+            "grid_export_kw": 0.2837516029770621,
+            "cost_cents": 966.5281622031756,
+            "self_consumption_kw": 508.88948372852633,
+            "savings_dollars": 381.66711279639475
         },
         {
             "house_id": "house_4",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 133.85795948867593,
-            "cost_cents": -56.59410505559612,
-            "self_consumption_kw": 218.32724220530164,
-            "savings_dollars": 163.74543165397623
+            "grid_export_kw": 19.144936111002004,
+            "cost_cents": 74.40778353244447,
+            "self_consumption_kw": 176.39415774967173,
+            "savings_dollars": 132.29561831225382
         },
         {
             "house_id": "house_5",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 91.01384101183191,
-            "cost_cents": 31.685905210726514,
-            "self_consumption_kw": 161.13801266944137,
-            "savings_dollars": 120.85350950208104
+            "grid_export_kw": 20.35562703167844,
+            "cost_cents": 80.3129032127517,
+            "self_consumption_kw": 177.79961051753486,
+            "savings_dollars": 133.34970788815116
         },
         {
             "house_id": "house_6",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 136.84505197184575,
-            "cost_cents": -51.80287202566664,
-            "self_consumption_kw": 209.60904108859432,
-            "savings_dollars": 157.20678081644573
+            "grid_export_kw": 16.610045707131462,
+            "cost_cents": 79.88032180608533,
+            "self_consumption_kw": 167.3272947361477,
+            "savings_dollars": 125.49547105211079
         },
         {
             "house_id": "house_7",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 152.70326900731405,
-            "cost_cents": -71.75944113014394,
-            "self_consumption_kw": 232.1630597987477,
-            "savings_dollars": 174.12229484906078
+            "grid_export_kw": 12.59661253397738,
+            "cost_cents": 122.94377473032905,
+            "self_consumption_kw": 131.4893882834943,
+            "savings_dollars": 98.61704121262072
         },
         {
             "house_id": "house_8",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 144.9659580927744,
-            "cost_cents": -56.28980840297381,
-            "self_consumption_kw": 218.8028483099838,
-            "savings_dollars": 164.10213623248785
+            "grid_export_kw": 11.172704417836083,
+            "cost_cents": 127.79277738982161,
+            "self_consumption_kw": 117.42378601325497,
+            "savings_dollars": 88.06783950994122
         },
         {
             "house_id": "house_9",
             "house_type": "Studio",
             "wealth_level": "Low_Income",
-            "grid_export_kw": 139.99074729740792,
-            "cost_cents": -55.78975351900032,
-            "self_consumption_kw": 218.78754088747175,
-            "savings_dollars": 164.0906556656038
+            "grid_export_kw": 17.526636028208667,
+            "cost_cents": 86.82232619221506,
+            "self_consumption_kw": 151.96182156079513,
+            "savings_dollars": 113.97136617059634
         }
     ]
 }

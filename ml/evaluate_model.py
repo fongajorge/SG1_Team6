@@ -1,6 +1,13 @@
 import pandas as pd
 import numpy as np
+import os
+import sys
 import matplotlib.pyplot as plt
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+src_path = os.path.join(current_dir, '..', 'simulator', 'src')
+sys.path.append(src_path)
+
 from ml_model import linear_regression, scaler
 
 # ---------------------------------------------------------
@@ -52,7 +59,7 @@ def run_evaluation():
     y_pred_B = model_B.predict(X_B_scaled)
 
     # ---------------------------------------------------------
-    # 3. RESULTS (For your report's table)
+    # 3. RESULTS
     # ---------------------------------------------------------
     print("\n--- Model A Results (Multivariate) ---")
     print(f"MSE: {calculate_mse(y, y_pred_A):.2f}")

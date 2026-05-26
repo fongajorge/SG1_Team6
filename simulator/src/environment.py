@@ -22,15 +22,15 @@ class Weather:
         try:
             # We look for the file in the root directory (one level up from src)
             # or in the current execution directory.
-            csv_path = 'Cleaned_Solar_Weather_Dataset.csv'
+            csv_path = 'clean_dataset.csv'
             if not os.path.exists(csv_path):
                 # Fallback path if running from inside src
-                csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'Cleaned_Solar_Weather_Dataset.csv')
+                csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'clean_dataset.csv')
                 
             self.data = pd.read_csv(csv_path)
             self.max_steps = len(self.data)
         except Exception as e:
-            raise RuntimeError(f"Could not load Cleaned_Solar_Weather_Dataset.csv. Please ensure it exists.") from e
+            raise RuntimeError(f"Could not load clean_dataset.csv. Please ensure it exists.") from e
         
         self.current_step_index = 0
 
