@@ -14,7 +14,7 @@ const tooltip = d3.select("body").append("div")
 
 let globalData = null;
 
-d3.json("/data/dashboard_data.json").then((data) => {
+d3.json("/SG1_Team6/data/dashboard_data.json").then((data) => {
     globalData = data;
     renderAll();
 }).catch((error) => {
